@@ -1,7 +1,8 @@
 # DrivePatrol
 Bad-USB Detector and Anti-Malware Application/AntiVirus made with Python.
 
-![resim](https://github.com/Elexs1zz/DrivePatrol/assets/139502497/f0d01f78-eb31-4775-8849-f4f52816c79f)
+![Adsız](https://github.com/Elexs1zz/DrivePatrol/assets/139502497/bc26a972-7a91-4481-8627-c73960e1e19a)
+
 
 Required Package/Library(s) for DrivePatrol
 
