@@ -55,6 +55,6 @@ Do you have any questions? Feel free to contact me!
 
 E-mail: [elexsizz@gmail.com]
 
-Discussions [https://github.com/Elexs1zz/FlarePie/discussions]
+Discussions [https://github.com/Elexs1zz/DriverPatrol/discussions]
 
 Thanks for helping us improve DriverPatrol! 🚀
