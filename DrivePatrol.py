@@ -20,15 +20,14 @@ def virus_scan(file_path):
                 scan_id = json_response['scan_id']
                 return scan_id
         else:
-            print("Tarama sırasında bir hata oluştu.")
+            print("An error occurred during scanning.")
             return None
     except Exception as e:
-        print("Hata:", e)
+        print("Error:", e)
         return None
 
 
 def get_scan_report(scan_id):
-
     api_key = "api_key"
 
     url = 'https://www.virustotal.com/vtapi/v2/file/report'
@@ -44,13 +43,13 @@ def get_scan_report(scan_id):
                 positives = json_response['positives']
                 total = json_response['total']
                 if positives > 0:
-                    print(f"Virüs tespit edildi! ({positives}/{total} tarama motoru)")
+                    print(f"Virus Found! ({positives}/{total} scan engines detected it)")
                 else:
-                    print("Dosya güvenli.")
+                    print("File is Safe.")
         else:
-            print("Tarama raporu alınamadı.")
+            print("Failed to retrieve the scan report.")
     except Exception as e:
-        print("Hata:", e)
+        print("Error:", e)
 
 
 def copy_hid_data_to_file(device_path, output_file):
@@ -60,22 +59,22 @@ def copy_hid_data_to_file(device_path, output_file):
                 output.write(hid_file.read())
         return True
     except Exception as e:
-        print("Hata:", e)
+        print("Error:", e)
         return False
 
 
-def usb_devices():
+def list_usb_devices():
     all_devices = hid.find_all_hid_devices()
 
     if not all_devices:
-        print("USB aygıt bulunamadı.")
+        print("No USB devices found.")
         return
 
-    print("Bilgisayardaki USB Aygıtları:")
+    print("USB Devices on the Computer:")
     for device in all_devices:
-        print("Üretici: %s" % device.vendor_name)
-        print("Ürün: %s" % device.product_name)
-        print("Serino: %s" % device.serial_number)
+        print("Vendor: %s" % device.vendor_name)
+        print("Product: %s" % device.product_name)
+        print("Serial Number: %s" % device.serial_number)
         print()
 
         device_path = device.device_path
@@ -87,7 +86,7 @@ def usb_devices():
             os.remove(temp_file)
 
 
-def usb_storage_devices():
+def list_usb_storage_devices():
     command = 'wmic diskdrive where "InterfaceType=\'USB\'" get DeviceID, Model, Size'
 
     try:
@@ -102,13 +101,11 @@ def usb_storage_devices():
                 if scan_id:
                     get_scan_report(scan_id)
     except Exception as e:
-        print("Hata:", e)
+        print("Error:", e)
 
 
 if __name__ == "__main__":
-    print("Bilgisayardaki USB Cihazları:")
-    usb_devices()
-    print("Bilgisayardaki USB Depolama Cihazları:")
-    usb_storage_devices()
-
-
+    print("USB Devices on the Computer:")
+    list_usb_devices()
+    print("USB Storage Devices on the Computer:")
+    list_usb_storage_devices()
